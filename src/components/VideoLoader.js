@@ -17,33 +17,21 @@ import {
 // https://www.youtube.com/watch?v=qnmK1_iQpnE&list=RDS8kCW-s8YDQ&index=27
 //<iframe width="560" height="315" src="https://www.youtube.com/embed/qnmK1_iQpnE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
+
 export class VideoLoader extends Component {
   constructor(props) {
     super(props);
     //console.log(props.videoLink);
     this.state = {
-      link: props.videoLink()
+      link: props.videoLink(),
+      type: "others"
     }
 
-
   }
 
-  componentWillMount() {
-   // console.log("will mount");
-      // this.setState({
-      //   link: this.props.videoLink
-      // }, () => {
-      //   //console.log(this.props.videoLink);
-      // });
-    
-
-  }
-
-  render() {
-    // console.log(this.state.link);
-    return (
-      <div className="video-wrapper">
-     <p>{this.props.videoLink()} </p> 
+  printVideo = () => {
+    let player =
+      <div>
         <Player key={this.props.videoLink()}>
           <source src={this.props.videoLink()} />
           <ControlBar>
@@ -55,15 +43,33 @@ export class VideoLoader extends Component {
             <VolumeMenuButton />
           </ControlBar>
         </Player>
+      </div>
 
-        {/* <iframe
-          title="as"
-          width="560"
-          height="315"
-          src="https://www.youtube.com/embed/qnmK1_iQpnE"
-          frameBorder="0"
-          allowFullScreen></iframe> */}
+    return player
+  }
 
+  printFrame = () => {
+    let iframe = <div>
+      <iframe
+        title="as"
+        width="560"
+        height="315"
+        src="https://www.youtube.com/embed/qnmK1_iQpnE"
+        frameBorder="0"
+        allowFullScreen>
+      </iframe>
+    </div>
+
+    return iframe
+  }
+
+  render() {
+    // console.log(this.state.link);
+    return (
+      <div className="video-wrapper">
+        <p>{this.props.videoLink()} </p>
+        {this.state.type == "youtube" && this.printFrame()}
+        {this.state.type == "others" && this.printVideo()}
       </div>
     )
   }
