@@ -1,0 +1,13 @@
+{
+    "version": 3,
+    "mappings": "AEAA,AAAA,IAAI,CAAC;EACH,UAAU,EAAE,IAAI;CACjB",
+    "sources": [
+        "App.scss",
+        "scss/_vars.scss",
+        "scss/_general.scss",
+        "scss/_forms.scss",
+        "scss/_history.scss"
+    ],
+    "names": [],
+    "file": "App.css"
+}
