@@ -24,7 +24,7 @@ export class VideoLoader extends Component {
     //console.log(props.videoLink);
     this.state = {
       link: props.videoLink(),
-      type: "others"
+      type: props.type
     }
 
   }
@@ -68,8 +68,9 @@ export class VideoLoader extends Component {
     return (
       <div className="video-wrapper">
         <p>{this.props.videoLink()} </p>
-        {this.state.type == "youtube" && this.printFrame()}
-        {this.state.type == "others" && this.printVideo()}
+        <p>{this.props.type()} </p>
+        {this.state.type() === "youtube" && this.printFrame()}
+        {this.state.type() === "others" && this.printVideo()}
       </div>
     )
   }

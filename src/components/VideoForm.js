@@ -29,7 +29,8 @@ export class VideoForm extends Component {
       history: [],
       validLink: false,
       linkValue: "",
-      error: ""
+      error: "",
+      type: "others"
     }
   }
 
@@ -51,9 +52,8 @@ export class VideoForm extends Component {
         error: "",
         validLink: true,
         linkValue: "",
-        history: [link, ...this.state.history]
+        history: [link, ...this.state.history],
       }, () => {
-
         //console.log("load new video");
         //console.log(this.state.history);
       });
@@ -69,11 +69,30 @@ export class VideoForm extends Component {
   sendLink = () => {
     let VideoSrc = "http://media.w3.org/2010/05/bunny/movie.mp4";
     if (this.state.history.length) {
+      //hist is history
       const hist = this.state.history;
       VideoSrc = hist[0];
     }
     return VideoSrc
   }
+
+  sendType = () => {
+    let VideoSrc = "http://media.w3.org/2010/05/bunny/movie.mp4";
+    if (this.state.history.length) {
+      //hist is history
+      const hist = this.state.history;
+      VideoSrc = hist[0];
+    }
+    //console.log(VideoSrc.includes("youtube"));
+    if(VideoSrc.includes("youtube")) {
+      return "youtube"
+    } else {
+      return "others"
+    }
+    
+  }
+
+
 
 
   render() {
@@ -99,7 +118,7 @@ export class VideoForm extends Component {
           </Button>
         </form>
         {/* <VideoLoader videoLink={this.state.history[0]}/> */}
-        <VideoLoader videoLink={this.sendLink} />
+        <VideoLoader videoLink={this.sendLink} type={this.sendType} />
         <History historyLinks={this.state.history} />
       </div>
     )
