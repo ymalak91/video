@@ -11,13 +11,6 @@ import {
   VolumeMenuButton
 } from 'video-react';
 
-// linkType will tell the type of the link ex: youtube, normal link (MP4,..)
-// http://peach.themazzone.com/durian/movies/sintel-1024-surround.mp4
-// http://media.w3.org/2010/05/bunny/movie.mp4
-// https://www.youtube.com/watch?v=qnmK1_iQpnE&list=RDS8kCW-s8YDQ&index=27
-//<iframe width="560" height="315" src="https://www.youtube.com/embed/qnmK1_iQpnE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-
 export class VideoLoader extends Component {
   constructor(props) {
     super(props);
@@ -49,12 +42,22 @@ export class VideoLoader extends Component {
   }
 
   printFrame = () => {
+    let linkSrc = this.props.videoLink();
+    var secondArg = linkSrc.indexOf('&');
+    var firstArg = linkSrc.indexOf('?');
+    if (secondArg != -1) {
+      linkSrc = linkSrc.substring(firstArg + 3, secondArg);
+    } else {
+      linkSrc = linkSrc.substring(firstArg + 3);
+    }
+    // console.log(firstArg, secondArg, linkSrc);
+
     let iframe = <div>
       <iframe
         title="as"
         width="560"
         height="315"
-        src="https://www.youtube.com/embed/qnmK1_iQpnE"
+        src={"https://www.youtube.com/embed/" + linkSrc}
         frameBorder="0"
         allowFullScreen>
       </iframe>

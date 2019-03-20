@@ -63,9 +63,9 @@ export class VideoForm extends Component {
         validLink: false,
       });
       return
-
     }
   }
+  
   sendLink = () => {
     let VideoSrc = "http://media.w3.org/2010/05/bunny/movie.mp4";
     if (this.state.history.length) {
@@ -73,6 +73,7 @@ export class VideoForm extends Component {
       const hist = this.state.history;
       VideoSrc = hist[0];
     }
+
     return VideoSrc
   }
 
