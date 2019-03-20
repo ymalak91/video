@@ -22,13 +22,11 @@ export class VideoForm extends Component {
   constructor(props) {
     super(props);
     // history will store the links that the user insert
-    // linkType will tell the type of the link ex: youtube, normal link (MP4,..)
     // validLink true if the link is valid, false if the link is not valid
     // error will give an error message
     // linkValue contains the value of the input link field
     this.state = {
       history: [],
-      linkType: "",
       validLink: false,
       linkValue: "",
       error: ""
@@ -56,8 +54,8 @@ export class VideoForm extends Component {
         history: [link, ...this.state.history]
       }, () => {
 
-        console.log("load new video");
-        console.log(this.state.history);
+        //console.log("load new video");
+        //console.log(this.state.history);
       });
     } else {
       this.setState({
@@ -67,10 +65,16 @@ export class VideoForm extends Component {
       return
 
     }
-
-
-
   }
+  sendLink = () => {
+    let VideoSrc = "http://media.w3.org/2010/05/bunny/movie.mp4";
+    if (this.state.history.length) {
+      const hist = this.state.history;
+      VideoSrc = hist[0];
+    }
+    return VideoSrc
+  }
+
 
   render() {
     const { classes } = this.props;
@@ -94,7 +98,8 @@ export class VideoForm extends Component {
             Go
           </Button>
         </form>
-        <VideoLoader />
+        {/* <VideoLoader videoLink={this.state.history[0]}/> */}
+        <VideoLoader videoLink={this.sendLink} />
         <History historyLinks={this.state.history} />
       </div>
     )

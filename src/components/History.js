@@ -1,11 +1,6 @@
 import React, { Component } from 'react';
 
 export class History extends Component {
-  constructor(props) {
-    super(props);
-    console.log(this.props.historyLinks);
-  }
-
 
   render() {
     return (
@@ -15,7 +10,6 @@ export class History extends Component {
           <ul>
             {
               this.props.historyLinks.map(function (link, i) {
-                console.log('test');
                 return <li key={i}>{link}</li>
               })
             }
