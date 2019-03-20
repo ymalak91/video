@@ -1,4 +1,22 @@
 body {
-  background: #CCC;
+  background: #FFF;
+}
+
+.video-form {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.textfield-styles label {
+  color: #CCC;
+}
+
+button.button-styles {
+  background: #7e57c2;
+  color: #FFF;
+}
+
+button.button-styles:hover {
+  background: #0062ff;
 }
 /*# sourceMappingURL=App.css.map */

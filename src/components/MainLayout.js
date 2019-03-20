@@ -6,8 +6,8 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 
 //import components
-import Header from './Header'; 
-
+import Header from './Header';
+import VideoForm from './VideoForm';
 
 const styles = theme => ({
   root: {
@@ -28,11 +28,17 @@ function MainLayout(props) {
   return (
     <div className={classes.root}>
       <Grid container >
-        <Grid item  xs={12}>
+        <Grid item xs={12}>
           <Paper className={classes.paper}>
             <Header />
           </Paper>
         </Grid>
+        <Grid item xs={12}>
+          <Paper className={classes.paper}>
+            <VideoForm />
+          </Paper>
+        </Grid>
+
       </Grid>
     </div>
   );

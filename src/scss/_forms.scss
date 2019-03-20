@@ -1,0 +1,18 @@
+.video-form {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.textfield-styles {
+  label {
+    color: $gray;
+  }
+}
+
+button.button-styles {
+  background: $purple;
+  color: $white;
+  &:hover {
+    background: $blue;
+  }
+}
