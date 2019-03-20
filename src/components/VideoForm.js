@@ -19,13 +19,69 @@ const styles = theme => ({
 
 export class VideoForm extends Component {
 
+  constructor(props) {
+    super(props);
+    // history will store the links that the user insert
+    // linkType will tell the type of the link ex: youtube, normal link (MP4,..)
+    // validLink true if the link is valid, false if the link is not valid
+    // error will give an error message
+    // linkValue contains the value of the input link field
+    this.state = {
+      history: [],
+      linkType: "",
+      validLink: false,
+      linkValue: "",
+      error: ""
+    }
+  }
+
+  changelink = (e) => {
+    this.setState({
+      linkValue: e.target.value
+    });
+  }
+
+  loadVideo = (e) => {
+    e.preventDefault();
+    const link = e.target.videoLink.value;
+    //check the length of a link (should not be too short)
+    //and no space
+    //and must have at leaste one "." (dot)
+    if ((link.length >= 7) && (link.indexOf(' ') === -1) && (link.indexOf('.') > "-1")) {
+
+      this.setState({
+        error: "",
+        validLink: true,
+        linkValue: "",
+        history: [link, ...this.state.history]
+      }, () => {
+
+        console.log("load new video");
+        console.log(this.state.history);
+      });
+    } else {
+      this.setState({
+        error: "check link lenght or remove spaces or add dot",
+        validLink: false,
+      });
+      return
+
+    }
+
+
+
+  }
+
   render() {
     const { classes } = this.props;
     return (
       <div>
-        <form className="video-form" autoComplete="off">
+        <form className="video-form" autoComplete="off" onSubmit={this.loadVideo}>
           <TextField
             required
+            name="videoLink"
+            value={this.state.linkValue}
+            onChange={this.changelink}
             error={false}
             id="LinkTextField"
             label="Paste your link here"
@@ -33,12 +89,13 @@ export class VideoForm extends Component {
             className={classNames(classes.textField, "textfield-styles")}
             margin="normal"
           />
-          <Button variant="contained" className="button-styles">
+          <p className="formError">{this.state.error}</p>
+          <Button type="submit" variant="contained" className="button-styles">
             Go
           </Button>
         </form>
         <VideoLoader />
-        <History />
+        <History historyLinks={this.state.history} />
       </div>
     )
   }

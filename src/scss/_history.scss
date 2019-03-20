@@ -1,0 +1,16 @@
+.history-wrapper {
+    margin: 0 auto;
+    text-align: center;
+
+    ul {
+        list-style-type: none;
+        max-width: 750px;
+        margin: 0 auto;
+        text-align: left;
+        padding: 0;
+        li {
+            color: $blue;
+            margin: 10px 0;
+        }
+    }
+}

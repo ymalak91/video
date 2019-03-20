@@ -1122,4 +1122,30 @@ button.button-styles {
 button.button-styles:hover {
   background: #0062ff;
 }
+
+.formError {
+  color: #ef2929;
+  padding: 0;
+  margin-top: 0;
+  text-align: left;
+  font-size: 13px;
+}
+
+.history-wrapper {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.history-wrapper ul {
+  list-style-type: none;
+  max-width: 750px;
+  margin: 0 auto;
+  text-align: left;
+  padding: 0;
+}
+
+.history-wrapper ul li {
+  color: #0062ff;
+  margin: 10px 0;
+}
 /*# sourceMappingURL=App.css.map */
