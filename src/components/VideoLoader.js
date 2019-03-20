@@ -11,6 +11,18 @@ import {
   VolumeMenuButton
 } from 'video-react';
 
+function trimYoutubeID(linkSrc) {
+  var secondArg = linkSrc.indexOf('&');
+  var firstArg = linkSrc.indexOf('?');
+  if (secondArg !== -1) {
+    linkSrc = linkSrc.substring(firstArg + 3, secondArg);
+  } else {
+    linkSrc = linkSrc.substring(firstArg + 3);
+  }
+  // console.log(firstArg, secondArg, linkSrc);
+  return linkSrc
+}
+
 export class VideoLoader extends Component {
   constructor(props) {
     super(props);
@@ -43,14 +55,7 @@ export class VideoLoader extends Component {
 
   printFrame = () => {
     let linkSrc = this.props.videoLink();
-    var secondArg = linkSrc.indexOf('&');
-    var firstArg = linkSrc.indexOf('?');
-    if (secondArg !== -1) {
-      linkSrc = linkSrc.substring(firstArg + 3, secondArg);
-    } else {
-      linkSrc = linkSrc.substring(firstArg + 3);
-    }
-    // console.log(firstArg, secondArg, linkSrc);
+    linkSrc = trimYoutubeID(linkSrc);
 
     let iframe = <div>
       <iframe
