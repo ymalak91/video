@@ -7,6 +7,10 @@ import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
 import Button from '@material-ui/core/Button';
 
+//import components
+import VideoLoader from './VideoLoader';
+import History from './History';
+
 const styles = theme => ({
   textField: {
     width: '100%'
@@ -33,6 +37,8 @@ export class VideoForm extends Component {
             Go
           </Button>
         </form>
+        <VideoLoader />
+        <History />
       </div>
     )
   }
