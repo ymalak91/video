@@ -45,7 +45,7 @@ export class VideoLoader extends Component {
     let linkSrc = this.props.videoLink();
     var secondArg = linkSrc.indexOf('&');
     var firstArg = linkSrc.indexOf('?');
-    if (secondArg != -1) {
+    if (secondArg !== -1) {
       linkSrc = linkSrc.substring(firstArg + 3, secondArg);
     } else {
       linkSrc = linkSrc.substring(firstArg + 3);
@@ -55,8 +55,6 @@ export class VideoLoader extends Component {
     let iframe = <div>
       <iframe
         title="as"
-        width="560"
-        height="315"
         src={"https://www.youtube.com/embed/" + linkSrc}
         frameBorder="0"
         allowFullScreen>
@@ -67,11 +65,8 @@ export class VideoLoader extends Component {
   }
 
   render() {
-    // console.log(this.state.link);
     return (
       <div className="video-wrapper">
-        <p>{this.props.videoLink()} </p>
-        <p>{this.props.type()} </p>
         {this.state.type() === "youtube" && this.printFrame()}
         {this.state.type() === "others" && this.printVideo()}
       </div>

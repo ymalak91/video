@@ -15,7 +15,8 @@ const styles = {
     boxShadow: 'none'
   },
   typo: {
-    fontSize: '42px'
+    fontSize: '42px',
+    color: "#FFF"
   }
 };
 

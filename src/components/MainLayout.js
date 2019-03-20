@@ -4,6 +4,7 @@ import React from 'react'
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
+import classNames from 'classnames';
 
 //import components
 import Header from './Header';
@@ -29,7 +30,7 @@ function MainLayout(props) {
     <div className={classes.root}>
       <Grid container >
         <Grid item xs={12}>
-          <Paper className={classes.paper}>
+          <Paper className={classNames(classes.paper, "header-styles") }>
             <Header />
           </Paper>
         </Grid>
